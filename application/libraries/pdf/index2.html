@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <link rel="stylesheet" href="style.css" media="all" />
+      <style type="text/css">
+         table th,
+         table td {
+         text-align: center;
+         border: 1px solid #848282;
+         border-left: 0;
+         }
+         table th {
+         padding: 2px 10px;
+         color: #5D6975;
+         white-space: nowrap;        
+         font-weight: normal;
+         }
+         table .service,
+         table .desc {
+         text-align: center;
+         }
+         table td {
+         padding:6px;
+         text-align: center;
+         font-size: 13px;
+         }
+         table th {
+         padding:6px;
+         text-align: center;
+         }
+         table td.service,
+         table td.desc {
+         vertical-align: top;
+         }
+         table td.unit,
+         table td.qty,
+         table td.total {
+         font-size: 1.2em;
+         }
+         #notices .notice {
+         color: #5D6975;
+         font-size: 1.2em;
+         }
+         footer {
+         color: #5D6975;
+         width: 100%;
+         height: 30px;
+         position: absolute;
+         bottom: 0;
+         border-top: 1px solid #848282;
+         padding: 8px 0;
+         text-align: center;
+         }
+         page {
+         background: white;
+         display: block;
+         margin: 1cm auto;
+         margin-bottom: 0.5cm;
+         padding: 0.5cm 1cm;
+         }
+         page[size="A4"] {  
+         width: 21cm;
+         height: 29.7cm; 
+         }
+         page[size="A4"][layout="landscape"] {
+         width: 29.7cm;
+         height: 21cm;  
+         }
+         @media print {
+         body, page {
+         margin: 0;
+         box-shadow: 0;
+         }
+         }
+         table.name{
+         margin-bottom: 20px;
+         }
+         table.name td{
+         text-align: left;
+         background: transparent !important;
+         border: 0;
+         }
+         table.name td span{
+         border-bottom: 1px solid #848282;
+         }
+         p{
+         margin: 0px;
+         }
+         table{
+         margin-bottom: 0;
+         }
+         .subject td , .subject th{
+         text-align: left;
+         }
+         table.subject{
+         float: left;
+         width: 3cm;
+         }
+         table.firstTerm{
+         float: left;
+         width: 12cm;
+         }
+         table.preboard{
+         float: left;
+         width: 6cm;
+         }
+         table.grandtotal{
+         float: left;
+         width: 2cm;
+         }
+         .text-left td{
+         text-align: left;
+         }
+         .text-left{
+         text-align: left;
+         }
+         .remarks{
+         }
+         .firstTerm td{
+         max-width: 50px;
+         width: 50px;
+         }
+         .preboard td{
+         max-width: 50px;
+         width: 50px;
+         }
+         .Border-none td:first-child{
+         border: 0;
+         background-color:
+         #d9bb71;
+         opacity: 0.2;
+         }
+         .Border-none:last-child td{
+         border-bottom: 1px solid #848282;
+         }
+         .Border-none{
+         background-color:transparent !important;
+         }
+         .Border-none td:nth-of-type(2n+1){
+         border: 0;
+         background-color:
+         #d9bb71;
+         opacity: 0.2;
+         border-right: 1px solid #848282;
+         }
+         .Border-none td{
+         }
+         tr:nth-of-type(even){
+         background-color: #f1f3f6;
+         }
+         .firstTerm tr:nth-of-type(2) td{
+         font-weight: bold;
+         }
+         .firstTerm tr:nth-of-type(2){
+         background:
+         #00772a;
+         color:
+         #fff;
+         }
+         .preboard tr:nth-of-type(2){
+         background:
+         #00772a;
+         color:
+         #fff;
+         }
+         .firstTerm tr td:nth-of-type(3){
+         border-right: 1px solid #848282;
+         }
+         .preboard tr td:nth-of-type(3){
+         border-right: 1px solid #848282;
+         }
+         .firstTerm tr td:nth-of-type(6){
+         border-right: 1px solid #848282;
+         }
+         .preboard tr td:nth-of-type(6){
+         border-right: 1px solid #848282;
+         }
+         .preboard tr:nth-of-type(2) td{
+         font-weight: bold;
+         }
+         .Border-none td:nth-of-type(2) , .Border-none td:nth-of-type(4){
+         border-right: 1px solid #848282;
+         }
+         .Border-none td:nth-of-type(3){
+         /* border-right: 1px solid transparent !important; */
+         }
+         .font-bold td{
+         font-weight: bold;
+         }
+         .tg-remark span{
+         height: 20px;
+         border-bottom: 1px solid #848282;
+         float: left;
+         width: 100%;
+         }
+         .remarks td{
+         text-align: left;
+         border: 0;
+         }
+         .tg-remark , .tg-remark tr{
+         background: transparent !important;
+         }
+         .tg-remark{
+         padding-top: 20px;
+         }
+         .title td{
+         text-align: center;
+         }
+         ._left p{margin-bottom: 10px;}
+         ._left p span
+         {
+         float: right;
+         height: 10px;
+         border-bottom: 1px solid #848282;
+         width: 100px;
+         }
+         .tg-supplementary td{
+         border-bottom: 1px solid #848282;
+         }
+         .tg-supplementary th{
+         border: 0px solid #848282;
+         font-weight: bold;
+         color: #000;
+         }
+         .tg-supplementary p
+         {
+         margin-bottom: 8px;
+         }
+         body table tr:last-child td{
+         border-bottom: 0 !important;
+         }
+      </style>
+   </head>
+   <body style="position: relative;
+      margin: 0 auto; 
+      color: #001028;
+      background: #f1f3f6; 
+      font-family: Arial, sans-serif; 
+      font-size: 12px; 
+      font-family: Arial;">
+      <page size="A4" layout="landscape">
+         <header class="clearfix" style="padding: 10px 0;">
+            <div id="logo" style=" text-align: center;
+               margin-bottom: 10px;">
+               <img src="Layer-1.png" style="width: 400px;">
+            </div>
+            <h1 style="color:
+               #000;
+               font-size: 1.5em;
+               line-height: 1.4em;
+               font-weight: bold;
+               text-align: center;
+               margin: 12px 0 10px 0;
+               text-transform: uppercase;">Progress Report</h1>
+         </header>
+         <main>
+            <table class="name" style="  width: 100%;
+               border-collapse: collapse;
+               border-spacing: 0;
+              ">
+               <tr>
+                  <td>Student Name : <span></span></td>
+                  <td>Class : <span></span></td>
+                  <td>Section : <span></span></td>
+                  <td>Roll No : <span></span></td>
+               </tr>
+            </table>
+            <div class="report-summery" style="  float: left;
+               width: 100%;
+               border: 1px solid
+               #848282;">
+               <table  class="subject" style="  width: 120px;float: left;
+                  border-collapse: collapse;
+                  border-spacing: 0;
+                  ">
+                  <tr>
+                     <th style="height: 76px;background:
+                        #00772a;
+                        color:
+                        #fff;
+                        text-align: center;
+                        text-transform: uppercase;
+                        font-weight: bold;">Subject</th>
+                  </tr>
+                  <tr>
+                     <td>English Paper 1</td>
+                  </tr>
+                  <tr>
+                     <td>English Paper 2</td>
+                  </tr>
+                  <tr>
+                     <td>Hindi</td>
+                  </tr>
+                  <tr>
+                     <td>Mathematics</td>
+                  </tr>
+                  <tr>
+                     <td>Physics</td>
+                  </tr>
+                  <tr>
+                     <td>Chemistry</td>
+                  </tr>
+                  <tr>
+                     <td>Biology</td>
+                  </tr>
+                  <tr>
+                     <td>History & Civics</td>
+                  </tr>
+                  <tr>
+                     <td>Computer</td>
+                  </tr>
+                  <tr class="font-bold">
+                     <td>Total</td>
+                  </tr>
+                  <tr   class="font-bold">
+                     <td>Percentage</td>
+                  </tr>
+                  <tr  class="font-bold">
+                     <td>Rank</td>
+                  </tr>
+                  <tr>
+                     <td>German</td>
+                  </tr>
+                  <tr>
+                     <td>SUPW</td>
+                  </tr>
+                  <tr>
+                     <td>Sports/Games</td>
+                  </tr>
+                  <tr>
+                     <td>Attendance</td>
+                  </tr>
+               </table>
+               <table class="firstTerm" style="  width: 300px;float: left;
+                  border-collapse: collapse;
+                  border-spacing: 0;
+                 ">
+                  <tr>
+                     <th colspan="3" style="background:
+                        #00772a;
+                        color:
+                        #fff;
+                        text-transform: uppercase;
+                        font-weight: bold;">First / Mid Term Examination</th>
+                     <th colspan="3" style="background:
+                        #00772a;
+                        color:
+                        #fff;
+                        text-transform: uppercase;
+                        font-weight: bold;">Second Term Examination</th>
+                  </tr>
+                  <tr>
+                     <td>Theory<br>80</td>
+                     <td>Proj/Prac/<br>C.I. Test<br>20</td>
+                     <td>Total<br>100</td>
+                     <td>Theory<br>80</td>
+                     <td>Proj/Prac/<br>C.I. Test<br>20</td>
+                     <td>Total<br>100</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+               </table>
+               <table class="preboard" style="    width: 300px;float: left;
+                  border-collapse: collapse;
+                  border-spacing: 0;
+                ">
+                  <tr>
+                     <th colspan="3"  style="background:
+                        #00772a;
+                        color:
+                        #fff;
+                        text-transform: uppercase;
+                        font-weight: bold;">Pre Board Examination</th>
+                  </tr>
+                  <tr>
+                     <td>Theory<br>80</td>
+                     <td>Proj/Prac/<br>C.I. Test<br>20</td>
+                     <td>Total<br>100</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr  class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr  class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr  class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+                  <tr  class="Border-none">
+                     <td colspan="2"></td>
+                     <td>0</td>
+                  </tr>
+               </table>
+               <table class="grandtotal" style="   width: 80px;float: left;
+                  border-collapse: collapse;
+                  border-spacing: 0;
+                 ">
+                  <tr>
+                     <td style="height: 76px;background:
+                        #00772a;
+                        color:
+                        #fff;
+                        text-transform: uppercase;
+                        font-weight: bold;">Grand Total <br> 200/300</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                  </tr>
+               </table>
+               <table class="remarks" style="  width: 225px;float: left;
+                  border-collapse: collapse;
+                  border-spacing: 0;">
+                  <tr class="title">
+                     <td style="height: 77px;background: #00772a;
+                        color: #fff;text-transform: uppercase;font-weight: bold;">
+                        Remarks
+                     </td>
+                  </tr>
+                  <tr class="tg-remark">
+                     <td>
+                        <div>
+                           <p>First Mid Term Examination</p>
+                           <span></span>
+                           <span></span>
+                           <span></span>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="tg-remark">
+                     <td>
+                        <div class="">
+                           <p>Second Term Examination</p>
+                           <span></span>
+                           <span></span>
+                           <span></span>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="tg-remark">
+                     <td>
+                        <div>
+                           <p>Pre-Board / Annual Examination</p>
+                           <span></span>
+                           <span></span>
+                           <span></span>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="tg-remark">
+                     <td>
+                        <div class="tg-pass-fail">
+                           <div class="_left">
+                              <p>Passed / Failed</p>
+                              <p>Promoted to Class<span></span></p>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+                  <tr class="tg-remark">
+                     <td>
+                        <div class="tg-supplementary">
+                           <p>Supplementary in</p>
+                           <div style="float:left;width:100%;">
+                              <div class="wd-30" style="    width: 23%;
+                                 float: left;
+                                 border-right: 1px solid #848282;
+                                 padding: 10px;
+                                 text-align: center;">
+                                 <h4 style=" margin: 0;
+                                    margin-bottom: 5px;">Date</h4>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                              </div>
+                              <div class="wd-30" style="    width: 23%;
+                                 float: left;
+                                 border-right: 1px solid #848282;
+                                 padding: 10px;
+                                 text-align: center;">
+                                 <h4 style=" margin: 0;
+                                    margin-bottom: 5px;">Subject</h4>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                              </div>
+                              <div class="wd-30" style="    width: 23%;
+                                 float: left;
+                                 border-right: 1px solid #848282;
+                                 padding: 10px;
+                                 text-align: center;">
+                                 <h4 style=" margin: 0;
+                                    margin-bottom: 5px;">Mark</h4>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                                 <p style="border-bottom: 1px solid #848282;
+                                    padding-bottom: 5px;"></p>
+                              </div>
+                           </div>
+                        </div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </main>
+      </page>
+   </body>
+</html>
